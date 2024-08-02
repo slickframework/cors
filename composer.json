@@ -1,0 +1,61 @@
+{
+    "name": "slick/cors",
+    "description": "A CORS module for Slick Framework",
+    "type": "library",
+    "version": "v0.1.0",
+    "require": {
+        "php": ">=8.2",
+        "slick/module-api": "dev-main"
+
+    },
+    "keywords": [
+        "slick",
+        "CORS",
+        "slick-modules"
+    ],
+    "require-dev": {
+        "phpmd/phpmd": "dev-master",
+        "phpunit/phpunit": "11.3.x-dev",
+        "phpstan/phpstan": "2.0.x-dev",
+        "phpspec/prophecy-phpunit": "2.x-dev",
+        "phpspec/prophecy": "1.x-dev",
+        "squizlabs/php_codesniffer": "4.0.x-dev"
+    },
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Slick\\Cors\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Tests\\Slick\\Cors\\": "tests/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Filipe Silva",
+            "email": "silvam.filipe@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "extra": {
+        "branch-alias": {
+            "dev-master": "0.1-dev",
+            "dev-develop": "0.1.x-dev"
+        }
+    },
+    "scripts": {
+        "test": "phpunit",
+        "check-style": "phpcs -p --standard=PSR2 --runtime-set ignore_errors_on_exit 1 --runtime-set ignore_warnings_on_exit 1 src",
+        "fix-style": "phpcbf -p --standard=PSR2 --runtime-set ignore_errors_on_exit 1 --runtime-set ignore_warnings_on_exit 1 src",
+        "check-code": "phpmd --ignore-errors-on-exit src html build/phpmd.xml > build/phpmd.html && phpstan analyze"
+    },
+    "config": {
+        "preferred-install": {
+            "*": "dist"
+        },
+        "sort-packages": true,
+        "optimize-autoloader": true
+    }
+}

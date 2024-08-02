@@ -1,0 +1,9 @@
+services:
+  php:
+    image: fsilva/php:8.2-cli
+    volumes:
+      - ./:/var/www/app
+    environment:
+      - USE_XDEBUG=no
+      - XDEBUG_MODE=develop,debug,coverage
+      - ENABLE_OPCACHE=no
