@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "6120583ba67c46f28234b36bf31c735a",
+    "content-hash": "0401ec694a3db5a14fcdf72b2d57e564",
     "packages": [
         {
             "name": "graham-campbell/result-type",
@@ -1291,6 +1291,87 @@
             "time": "2024-05-31T15:07:36+00:00"
         },
         {
+            "name": "symfony/routing",
+            "version": "7.2.x-dev",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/routing.git",
+                "reference": "da979310559544c7fc7098f8a067890b78775b44"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/routing/zipball/da979310559544c7fc7098f8a067890b78775b44",
+                "reference": "da979310559544c7fc7098f8a067890b78775b44",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=8.2",
+                "symfony/deprecation-contracts": "^2.5|^3"
+            },
+            "conflict": {
+                "symfony/config": "<6.4",
+                "symfony/dependency-injection": "<6.4",
+                "symfony/yaml": "<6.4"
+            },
+            "require-dev": {
+                "psr/log": "^1|^2|^3",
+                "symfony/config": "^6.4|^7.0",
+                "symfony/dependency-injection": "^6.4|^7.0",
+                "symfony/expression-language": "^6.4|^7.0",
+                "symfony/http-foundation": "^6.4|^7.0",
+                "symfony/yaml": "^6.4|^7.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Symfony\\Component\\Routing\\": ""
+                },
+                "exclude-from-classmap": [
+                    "/Tests/"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Fabien Potencier",
+                    "email": "fabien@symfony.com"
+                },
+                {
+                    "name": "Symfony Community",
+                    "homepage": "https://symfony.com/contributors"
+                }
+            ],
+            "description": "Maps an HTTP request to a set of configuration variables",
+            "homepage": "https://symfony.com",
+            "keywords": [
+                "router",
+                "routing",
+                "uri",
+                "url"
+            ],
+            "support": {
+                "source": "https://github.com/symfony/routing/tree/7.2"
+            },
+            "funding": [
+                {
+                    "url": "https://symfony.com/sponsor",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/fabpot",
+                    "type": "github"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
+                    "type": "tidelift"
+                }
+            ],
+            "time": "2024-08-04T15:15:46+00:00"
+        },
+        {
             "name": "symfony/service-contracts",
             "version": "dev-main",
             "source": {
@@ -2298,12 +2379,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpmd/phpmd.git",
-                "reference": "caf04a5c1c91bdecefbe900c2a7d6235aa5c6106"
+                "reference": "90028a423e147b92e8f81cb615b09e008992f220"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpmd/phpmd/zipball/caf04a5c1c91bdecefbe900c2a7d6235aa5c6106",
-                "reference": "caf04a5c1c91bdecefbe900c2a7d6235aa5c6106",
+                "url": "https://api.github.com/repos/phpmd/phpmd/zipball/90028a423e147b92e8f81cb615b09e008992f220",
+                "reference": "90028a423e147b92e8f81cb615b09e008992f220",
                 "shasum": ""
             },
             "require": {
@@ -2374,7 +2455,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2024-05-25T19:02:53+00:00"
+            "time": "2024-08-04T20:01:23+00:00"
         },
         {
             "name": "phpspec/prophecy",
@@ -2941,16 +3022,16 @@
         },
         {
             "name": "phpunit/phpunit",
-            "version": "dev-main",
+            "version": "11.3.x-dev",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/phpunit.git",
-                "reference": "4edd2c9d8cfa2e29bb20611e1ee6017f2097e977"
+                "reference": "220aee5a526d565eb432083872f68b39774d340b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/4edd2c9d8cfa2e29bb20611e1ee6017f2097e977",
-                "reference": "4edd2c9d8cfa2e29bb20611e1ee6017f2097e977",
+                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/220aee5a526d565eb432083872f68b39774d340b",
+                "reference": "220aee5a526d565eb432083872f68b39774d340b",
                 "shasum": ""
             },
             "require": {
@@ -2983,7 +3064,6 @@
             "suggest": {
                 "ext-soap": "To be able to generate mocks based on WSDL files"
             },
-            "default-branch": true,
             "bin": [
                 "phpunit"
             ],
@@ -3022,7 +3102,7 @@
             "support": {
                 "issues": "https://github.com/sebastianbergmann/phpunit/issues",
                 "security": "https://github.com/sebastianbergmann/phpunit/security/policy",
-                "source": "https://github.com/sebastianbergmann/phpunit/tree/main"
+                "source": "https://github.com/sebastianbergmann/phpunit/tree/11.3"
             },
             "funding": [
                 {
@@ -3038,7 +3118,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2024-08-02T06:00:19+00:00"
+            "time": "2024-08-05T06:57:35+00:00"
         },
         {
             "name": "psr/log",
@@ -4035,12 +4115,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/PHPCSStandards/PHP_CodeSniffer.git",
-                "reference": "a3ffe7cd048a9663f287d18556824b2b83d9635b"
+                "reference": "5fe7d7416909c9c4eb9ccf6939bb492bb7838c5e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/PHPCSStandards/PHP_CodeSniffer/zipball/a3ffe7cd048a9663f287d18556824b2b83d9635b",
-                "reference": "a3ffe7cd048a9663f287d18556824b2b83d9635b",
+                "url": "https://api.github.com/repos/PHPCSStandards/PHP_CodeSniffer/zipball/5fe7d7416909c9c4eb9ccf6939bb492bb7838c5e",
+                "reference": "5fe7d7416909c9c4eb9ccf6939bb492bb7838c5e",
                 "shasum": ""
             },
             "require": {
@@ -4107,7 +4187,7 @@
                     "type": "open_collective"
                 }
             ],
-            "time": "2024-08-01T21:57:50+00:00"
+            "time": "2024-08-05T00:29:55+00:00"
         },
         {
             "name": "symfony/config",
@@ -4115,12 +4195,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/config.git",
-                "reference": "ea697ac027a22ae1520c500c156739644829bc98"
+                "reference": "cf6d4f3edc6de6a629c342434c1a694a6de8e2f4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/config/zipball/ea697ac027a22ae1520c500c156739644829bc98",
-                "reference": "ea697ac027a22ae1520c500c156739644829bc98",
+                "url": "https://api.github.com/repos/symfony/config/zipball/cf6d4f3edc6de6a629c342434c1a694a6de8e2f4",
+                "reference": "cf6d4f3edc6de6a629c342434c1a694a6de8e2f4",
                 "shasum": ""
             },
             "require": {
@@ -4182,7 +4262,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2024-07-26T13:29:19+00:00"
+            "time": "2024-08-02T06:50:04+00:00"
         },
         {
             "name": "symfony/dependency-injection",
@@ -4190,12 +4270,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/dependency-injection.git",
-                "reference": "6c82c9d4ecccb4bdd758f07ede6a6c4a6cc783e6"
+                "reference": "c90cd2f44b5d9f865b418c6b070396b0ad9d272b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/dependency-injection/zipball/6c82c9d4ecccb4bdd758f07ede6a6c4a6cc783e6",
-                "reference": "6c82c9d4ecccb4bdd758f07ede6a6c4a6cc783e6",
+                "url": "https://api.github.com/repos/symfony/dependency-injection/zipball/c90cd2f44b5d9f865b418c6b070396b0ad9d272b",
+                "reference": "c90cd2f44b5d9f865b418c6b070396b0ad9d272b",
                 "shasum": ""
             },
             "require": {
@@ -4262,7 +4342,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2024-07-26T13:29:19+00:00"
+            "time": "2024-08-05T08:22:14+00:00"
         },
         {
             "name": "symfony/filesystem",
@@ -4336,12 +4416,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/var-exporter.git",
-                "reference": "3f31aa0fe09e1a3e938118cf60a8deabfdafe6ae"
+                "reference": "8685f13a229952c49eac54ba94ac03d1ced1f7e3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/var-exporter/zipball/3f31aa0fe09e1a3e938118cf60a8deabfdafe6ae",
-                "reference": "3f31aa0fe09e1a3e938118cf60a8deabfdafe6ae",
+                "url": "https://api.github.com/repos/symfony/var-exporter/zipball/8685f13a229952c49eac54ba94ac03d1ced1f7e3",
+                "reference": "8685f13a229952c49eac54ba94ac03d1ced1f7e3",
                 "shasum": ""
             },
             "require": {
@@ -4404,7 +4484,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2024-07-06T07:57:47+00:00"
+            "time": "2024-08-02T06:50:04+00:00"
         },
         {
             "name": "theseer/tokenizer",
@@ -4518,7 +4598,9 @@
     "aliases": [],
     "minimum-stability": "dev",
     "stability-flags": {
+        "slick/http": 20,
         "slick/module-api": 20,
+        "symfony/routing": 20,
         "phpmd/phpmd": 20,
         "phpunit/phpunit": 20,
         "phpstan/phpstan": 20,

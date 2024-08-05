@@ -34,4 +34,11 @@ class CorsModuleTest extends TestCase
             $settings['headers']
         );
     }
+
+    public function testMiddlewarePlacement(): void
+    {
+        $module = new CorsModule();
+        $middlewares = $module->middlewareHandlers();
+        $this->assertCount(1, $middlewares);
+    }
 }

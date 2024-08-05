@@ -11,12 +11,17 @@ declare(strict_types=1);
 
 namespace Slick\Cors\Infrastructure;
 
+use Exception;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\MiddlewareInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 use Slick\Configuration\ConfigurationInterface;
 use Slick\Http\Message\Response;
+use Symfony\Component\Routing\Exception\MethodNotAllowedException;
+use Symfony\Component\Routing\Exception\NoConfigurationException;
+use Symfony\Component\Routing\Exception\ResourceNotFoundException;
+use Symfony\Component\Routing\Matcher\UrlMatcherInterface;
 
 /**
  * CorsMiddleware
@@ -26,12 +31,22 @@ use Slick\Http\Message\Response;
 final readonly class CorsMiddleware implements MiddlewareInterface
 {
 
-    public function __construct(private ConfigurationInterface $config)
-    {
+    public function __construct(
+        private ConfigurationInterface $config,
+        private UrlMatcherInterface $matcher
+    ) {
     }
 
     public function process(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface
     {
+        try {
+            $this->matcher->match($request->getUri()->getPath());
+        } catch (MethodNotAllowedException $exception) {
+            return $this->addHeaders(new Response(405, $this->toJson($exception)));
+        } catch (NoConfigurationException|ResourceNotFoundException $exception) {
+            return $this->addHeaders(new Response(404, $this->toJson($exception)));
+        }
+
         $response = strtoupper($request->getMethod()) === 'OPTIONS' ? new Response(200) : $handler->handle($request);
         return $this->addHeaders($response);
     }
@@ -44,5 +59,15 @@ final readonly class CorsMiddleware implements MiddlewareInterface
             ->withHeader('Access-Control-Allow-Headers', $this->config->get('cors.headers'))
             ->withHeader('Access-Control-Allow-Credentials', $this->config->get('cors.credentials'))
         ;
+    }
+
+    /**
+     * @param Exception|MethodNotAllowedException $exception
+     * @return string
+     */
+    public function toJson(Exception|MethodNotAllowedException $exception): string
+    {
+        $message = json_encode($exception->getMessage());
+        return $message ?: "";
     }
 }
