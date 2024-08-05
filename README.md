@@ -3,7 +3,7 @@
 [![Latest Version](https://img.shields.io/github/release/slickframework/cors.svg?style=flat-square)](https://github.com/slickframework/cors/releases)
 [![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](LICENSE)
 [![Build Status](https://img.shields.io/github/actions/workflow/status/slickframework/cors/continuous-integration.yml?style=flat-square)](https://github.com/slickframework/cors/actions/workflows/continuous-integration.yml)
-[![Quality Score](https://img.shields.io/scrutinizer/g/slickframework/cors/master.svg?style=flat-square)](https://scrutinizer-ci.com/g/slickframework/cors?branch=master)
+[![Quality Score](https://img.shields.io/scrutinizer/g/slickframework/cors/main.svg?style=flat-square)](https://scrutinizer-ci.com/g/slickframework/cors?branch=main)
 [![Total Downloads](https://img.shields.io/packagist/dt/slick/cors.svg?style=flat-square)](https://packagist.org/packages/slick/cors)
 
 
