@@ -47,7 +47,9 @@ final readonly class CorsMiddleware implements MiddlewareInterface
             return $this->addHeaders(new Response(404, $this->toJson($exception)));
         }
 
-        $response = strtoupper($request->getMethod()) === 'OPTIONS' ? new Response(200) : $handler->handle($request);
+        $response = strtoupper($request->getMethod()) === 'OPTIONS'
+            ? (new Response(200))->withHeader('Content-Type', "application/json")
+            : $handler->handle($request);
         return $this->addHeaders($response);
     }
 
