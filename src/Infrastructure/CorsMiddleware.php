@@ -39,16 +39,17 @@ final readonly class CorsMiddleware implements MiddlewareInterface
 
     public function process(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface
     {
+        $headers = ['Content-Type' => 'application/json'];
         try {
             $this->matcher->match($request->getUri()->getPath());
         } catch (MethodNotAllowedException $exception) {
-            return $this->addHeaders(new Response(405, $this->toJson($exception)));
+            return $this->addHeaders(new Response(405, $this->toJson($exception), $headers));
         } catch (NoConfigurationException|ResourceNotFoundException $exception) {
-            return $this->addHeaders(new Response(404, $this->toJson($exception)));
+            return $this->addHeaders(new Response(404, $this->toJson($exception), $headers));
         }
 
         $response = strtoupper($request->getMethod()) === 'OPTIONS'
-            ? (new Response(200))->withHeader('Content-Type', "application/json")
+            ? (new Response(200))->withHeader('Content-Type', $headers['Content-Type'])
             : $handler->handle($request);
         return $this->addHeaders($response);
     }

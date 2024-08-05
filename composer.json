@@ -2,7 +2,7 @@
     "name": "slick/cors",
     "description": "A CORS module for Slick Framework",
     "type": "library",
-    "version": "v0.2.1",
+    "version": "v0.2.2",
     "require": {
         "php": ">=8.2",
         "slick/configuration": "^2.0",
