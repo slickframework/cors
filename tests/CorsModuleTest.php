@@ -8,15 +8,30 @@
 
 namespace Tests\Slick\Cors;
 
-use Slick\Cors\CorsModule;
+use Dotenv\Dotenv;
 use PHPUnit\Framework\TestCase;
+use Prophecy\PhpUnit\ProphecyTrait;
+use Slick\Cors\CorsModule;
 
 class CorsModuleTest extends TestCase
 {
+    use ProphecyTrait;
 
     public function testDescription(): void
     {
         $module = new CorsModule();
         $this->assertIsString($module->description());
+    }
+
+    public function testSettings(): void
+    {
+        $env = $this->prophesize(Dotenv::class)->reveal();
+        $module = new CorsModule();
+        $settings = $module->settings($env)['cors'];
+        $this->assertEquals("example.com", $settings['origin']);
+        $this->assertEquals(
+            "origin, x-requested-with, content-type, authorization",
+            $settings['headers']
+        );
     }
 }
