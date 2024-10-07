@@ -45,6 +45,7 @@ trait JsonMethods
     private function details(Throwable $throwable, ExceptionInspector $inspector): string
     {
         $errorMessage = $throwable->getMessage() ? $throwable->getMessage(). " " : null;
-        return $errorMessage . preg_split('/\r?\n/', ltrim($inspector->help()), 2)[0];
+        $details = $errorMessage . preg_split('/\r?\n/', ltrim((string) $inspector->help()), 2)[0];
+        return trim($details);
     }
 }
