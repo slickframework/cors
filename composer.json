@@ -2,12 +2,14 @@
     "name": "slick/cors",
     "description": "A CORS module for Slick Framework",
     "type": "library",
-    "version": "v0.2.2",
+    "version": "v0.3.0",
     "require": {
         "php": ">=8.2",
-        "slick/configuration": "^2.0",
-        "slick/http": "^3.1@dev",
-        "slick/module-api": "dev-main",
+        "slick/configuration": "^2.2@dev",
+        "slick/error-handler": ">=v0.4.0",
+        "slick/http": ">=v3.0.3",
+        "slick/json-api": "^1.0@dev",
+        "slick/module-api": ">=v0.4.0",
         "symfony/routing": "7.2.x-dev"
     },
     "keywords": [
@@ -43,8 +45,8 @@
     "minimum-stability": "dev",
     "extra": {
         "branch-alias": {
-            "dev-main": "0.2-dev",
-            "dev-develop": "0.3.x-dev"
+            "dev-main": "0.3-dev",
+            "dev-develop": "0.4.x-dev"
         }
     },
     "scripts": {

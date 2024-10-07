@@ -33,13 +33,14 @@ final readonly class CorsMiddleware implements MiddlewareInterface
 
     public function __construct(
         private ConfigurationInterface $config,
-        private UrlMatcherInterface $matcher
+        private UrlMatcherInterface $matcher,
+        private Converter $converter
     ) {
     }
 
     public function process(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface
     {
-        $headers = ['Content-Type' => 'application/json'];
+        $headers = ['Content-Type' => $this->converter->contentType()];
         try {
             $this->matcher->match($request->getUri()->getPath());
         } catch (MethodNotAllowedException $exception) {
@@ -70,7 +71,6 @@ final readonly class CorsMiddleware implements MiddlewareInterface
      */
     public function toJson(Exception|MethodNotAllowedException $exception): string
     {
-        $message = json_encode($exception->getMessage());
-        return $message ?: "";
+        return $this->converter->convert($exception);
     }
 }

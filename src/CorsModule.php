@@ -12,7 +12,9 @@ declare(strict_types=1);
 namespace Slick\Cors;
 
 use Dotenv\Dotenv;
+use Slick\Cors\Infrastructure\Converter;
 use Slick\Cors\Infrastructure\CorsMiddleware;
+use Slick\Di\Definition\ObjectDefinition;
 use Slick\ModuleApi\Infrastructure\AbstractModule;
 use Slick\ModuleApi\Infrastructure\FrontController\MiddlewareHandler;
 use Slick\ModuleApi\Infrastructure\FrontController\MiddlewareHandlerInterface;
@@ -29,7 +31,7 @@ use function Slick\ModuleApi\importSettingsFile;
 final class CorsModule extends AbstractModule implements WebModuleInterface
 {
     /** @var array<array<string, mixed>>  */
-    private static array $defaultConfig = [
+    public static array $defaultConfig = [
         'cors' => [
             'origin' => '*',
             'methods' => 'GET, POST, PATCH, PUT, HEAD, DELETE, OPTIONS',
@@ -55,6 +57,14 @@ final class CorsModule extends AbstractModule implements WebModuleInterface
         $file = APP_ROOT . '/config/modules/cors.php';
         return importSettingsFile($file, self::$defaultConfig);
     }
+
+    public function services(): array
+    {
+        return [
+            Converter::class => ObjectDefinition::create(Converter\JsonApiConverter::class)
+        ];
+    }
+
 
     /**
      * Retrieves an array of middleware handlers.
