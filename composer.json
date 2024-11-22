@@ -2,7 +2,7 @@
     "name": "slick/cors",
     "description": "A CORS module for Slick Framework",
     "type": "library",
-    "version": "v0.3.0",
+    "version": "v0.4.0",
     "require": {
         "php": ">=8.2",
         "slick/configuration": "^2.2@dev",
@@ -19,10 +19,10 @@
     ],
     "require-dev": {
         "phpmd/phpmd": "dev-master",
-        "phpunit/phpunit": "11.3.x-dev",
+        "phpspec/prophecy": "^1.0@dev",
+        "phpspec/prophecy-phpunit": "^2.0@dev",
         "phpstan/phpstan": "2.0.x-dev",
-        "phpspec/prophecy-phpunit": "2.x-dev",
-        "phpspec/prophecy": "1.x-dev",
+        "phpunit/phpunit": "11.5.x-dev",
         "squizlabs/php_codesniffer": "4.0.x-dev"
     },
     "license": "MIT",
