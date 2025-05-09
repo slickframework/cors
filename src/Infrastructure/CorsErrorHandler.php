@@ -16,6 +16,7 @@ use Slick\Cors\CorsModule;
 use Slick\ErrorHandler\Exception\ExceptionInspector;
 use Slick\ErrorHandler\Handler\HandlerInterface;
 use Slick\ErrorHandler\RunnerInterface;
+use Slick\Http\Message\Server\Request;
 use Throwable;
 use function Slick\ModuleApi\importSettingsFile;
 
@@ -31,10 +32,21 @@ final readonly class CorsErrorHandler implements HandlerInterface
     {
     }
 
-    public function handle(Throwable $throwable, ExceptionInspector $inspector, RunnerInterface $runner): ?int
+    /**
+     * @param Throwable $throwable
+     * @param ExceptionInspector $inspector
+     * @param RunnerInterface $runner
+     * @return int
+     * @SuppressWarnings(PHPMD)
+     */
+    public function handle(Throwable $throwable, ExceptionInspector $inspector, RunnerInterface $runner): int
     {
+        $request = new Request();
+        $referer = $request->hasHeader('origin')
+            ? $request->getHeaderLine('origin')
+            : '*';
         $runner->outputHeaders([
-            "Access-Control-Allow-Origin" => $this->config->get('cors.origin'),
+            "Access-Control-Allow-Origin" => $this->config->get('cors.origin', $referer),
             "Access-Control-Allow-Methods" => $this->config->get('cors.methods'),
             "Access-Control-Allow-Headers" => $this->config->get('cors.headers'),
             "Access-Control-Allow-Credentials" => $this->config->get('cors.credentials'),

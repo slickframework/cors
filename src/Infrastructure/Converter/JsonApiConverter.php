@@ -44,7 +44,8 @@ final class JsonApiConverter implements Converter
                 $jsonApiError->withIdentifier(uniqid())
             ]
         ];
-        return json_encode($response, JSON_UNESCAPED_UNICODE|JSON_PRETTY_PRINT);
+        $jsonResponse = json_encode($response, JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT);
+        return $jsonResponse ?: '';
     }
 
     /**

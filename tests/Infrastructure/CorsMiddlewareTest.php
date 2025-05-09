@@ -103,7 +103,7 @@ class CorsMiddlewareTest extends TestCase
     private function mockConfigurationSettings(): ObjectProphecy|ConfigurationInterface
     {
         $settings = $this->prophesize(ConfigurationInterface::class);
-        $settings->get('cors.origin')->shouldBeCalled()->willReturn("www.example.com");
+        $settings->get('cors.origin', Argument::any())->shouldBeCalled()->willReturn("www.example.com");
         $settings->get('cors.headers')
             ->shouldBeCalled()
             ->willReturn("origin, x-requested-with, content-type, authorization");
@@ -123,6 +123,8 @@ class CorsMiddlewareTest extends TestCase
         $request = $this->prophesize(ServerRequestInterface::class);
         $request->getMethod()->willReturn($method);
         $request->getUri()->willReturn($uri);
+        $request->hasHeader('origin')->willReturn(true);
+        $request->getHeaderLine('origin')->willReturn('https://example.com/test');
         return $request;
     }
 

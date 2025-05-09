@@ -33,7 +33,6 @@ final class CorsModule extends AbstractModule implements WebModuleInterface
     /** @var array<array<string, mixed>>  */
     public static array $defaultConfig = [
         'cors' => [
-            'origin' => '*',
             'methods' => 'GET, POST, PATCH, PUT, HEAD, DELETE, OPTIONS',
             'headers' => 'origin, x-requested-with, content-type, authorization',
             'credentials' => 'true'

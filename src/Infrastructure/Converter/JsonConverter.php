@@ -31,10 +31,11 @@ final class JsonConverter implements Converter
     public function convert(Throwable $throwable): string
     {
         $inspector = new ExceptionInspector($throwable);
-        return json_encode([
+        $errorDetails = json_encode([
             "error" => $this->clearTitle($throwable),
             "details" => $this->details($throwable, $inspector)
         ]);
+        return $errorDetails ?: '';
     }
 
     /**

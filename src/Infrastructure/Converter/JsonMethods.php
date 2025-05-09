@@ -32,7 +32,8 @@ trait JsonMethods
     {
         $parts = explode('\\', get_class($throwable));
         $name = array_pop($parts);
-        return ucfirst(trim(strtolower(implode(' ', preg_split('/(?=[A-Z])/', $name)))));
+        $titleParts = preg_split('/(?=[A-Z])/', $name);
+        return ucfirst(trim(strtolower(implode(' ', $titleParts ?: []))));
     }
 
     /**
@@ -45,7 +46,9 @@ trait JsonMethods
     private function details(Throwable $throwable, ExceptionInspector $inspector): string
     {
         $errorMessage = $throwable->getMessage() ? $throwable->getMessage(). " " : null;
-        $details = $errorMessage . preg_split('/\r?\n/', ltrim((string) $inspector->help()), 2)[0];
+        $help = preg_split('/\r?\n/', ltrim((string)$inspector->help()), 2);
+        $help = is_array($help) ? $help[0] : '';
+        $details = $errorMessage . $help[0];
         return trim($details);
     }
 }
